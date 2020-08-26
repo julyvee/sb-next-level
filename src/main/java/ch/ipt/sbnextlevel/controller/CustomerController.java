@@ -26,6 +26,9 @@ public class CustomerController {
 
     @GetMapping("/customers")
     public List<Customer> getAllCustomers() {
+        // String requestId = UUID.randomUUID().toString();
+        // MDC.put("REQ_ID", requestId);
+
         return customerService.getAllCustomers();
     }
 
