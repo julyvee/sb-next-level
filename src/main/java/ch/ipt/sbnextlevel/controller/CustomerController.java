@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.ipt.sbnextlevel.model.Customer;
@@ -33,16 +34,12 @@ public class CustomerController {
     }
 
     // http://localhost:8080/customers?firstName=Hans&lastName=Zimmer
-    /*
-     * @GetMapping("/customers") public List<Customer>
-     * findCustomersByFilters(@RequestParam(required = false) String firstName,
-     * 
-     * @RequestParam(required = false) String lastName,
-     * 
-     * @RequestParam(required = false, defaultValue = "0") int minAge,
-     * 
-     * @RequestParam(required = false, defaultValue = "0") int maxAge) { return
-     * customerService.findCustomersByFilters(firstName, lastName, minAge, maxAge);
-     * }
-     */
+    // @GetMapping("/customers")
+    public List<Customer> findCustomersByFilters(@RequestParam(required = false) String firstName,
+            @RequestParam(required = false) String lastName,
+            @RequestParam(required = false, defaultValue = "0") int minAge,
+            @RequestParam(required = false, defaultValue = "0") int maxAge) {
+        return customerService.findCustomersByFilters(firstName, lastName, minAge, maxAge);
+    }
+
 }

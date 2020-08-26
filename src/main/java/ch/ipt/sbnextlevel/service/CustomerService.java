@@ -26,14 +26,21 @@ public class CustomerService {
     private ModelMapper modelMapper;
 
     public Customer getCustomerById(int id) {
+
+        if (id < 0) {
+            LOGGER.info("Negative id {} not allowed.", id);
+            return null;
+        }
+
         Optional<CustomerEntity> dbResult = customerDAO.findById(id);
 
         if (dbResult.isPresent()) {
+            LOGGER.debug("Customer found: {}", dbResult.get());
             return modelMapper.map(dbResult.get(), Customer.class);
+        } else {
+            LOGGER.info("Customer with id {} not found.", id);
+            return null;
         }
-
-        LOGGER.info("Customer with id {} not found", id);
-        return null;
     }
 
     public List<Customer> getAllCustomers() {
@@ -45,17 +52,25 @@ public class CustomerService {
             customers.add(customer);
         }
 
+        if (customers.isEmpty()) {
+            LOGGER.debug("No Customers found.");
+        }
+
         return customers;
     }
 
     public List<Customer> findCustomersByFilters(String firstName, String lastName, int minAge, int maxAge) {
-        // List<CustomerEntity> dbResult =
+        // TODO: Optional - Use Exception Handling to validate input parameters
+
+        // TODO: Build the specification
+        // Specification<CustomerEntity> spec =
+        // List<CustomerEntity> dbResult = customerDAO.findAll(spec);
         List<Customer> customers = new ArrayList<>();
 
-        /*
-         * for (CustomerEntity customerEntity : dbResult) { Customer customer =
-         * modelMapper.map(customerEntity, Customer.class); customers.add(customer); }
-         */
+        // for (CustomerEntity customerEntity : dbResult) {
+        // Customer customer = modelMapper.map(customerEntity, Customer.class);
+        // customers.add(customer);
+        // }
 
         return customers;
     }
