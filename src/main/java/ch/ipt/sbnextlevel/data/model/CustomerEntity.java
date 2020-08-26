@@ -1,11 +1,16 @@
 package ch.ipt.sbnextlevel.data.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class CustomerEntity {
     private int id;
     private String firstName;
     private String lastName;
     private int age;
 
+    @Id
     public int getId() {
         return this.id;
     }
