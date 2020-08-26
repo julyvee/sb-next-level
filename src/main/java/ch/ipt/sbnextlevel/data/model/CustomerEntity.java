@@ -1,23 +1,26 @@
 package ch.ipt.sbnextlevel.data.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "T_CUSTOMERS")
 public class CustomerEntity {
-    private int id;
+    private Integer id;
     private String firstName;
     private String lastName;
     private int age;
 
     @Id
-    public int getId() {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
         return this.id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
