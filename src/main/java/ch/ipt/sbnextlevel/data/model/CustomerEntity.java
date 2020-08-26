@@ -2,8 +2,10 @@ package ch.ipt.sbnextlevel.data.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "T_CUSTOMERS")
 public class CustomerEntity {
     private int id;
     private String firstName;
