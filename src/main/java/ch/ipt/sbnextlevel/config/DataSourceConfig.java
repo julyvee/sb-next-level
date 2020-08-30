@@ -1,4 +1,4 @@
-package ch.ipt.sbnextlevel.data.repo;
+package ch.ipt.sbnextlevel.config;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;

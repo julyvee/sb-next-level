@@ -27,6 +27,8 @@ public class CustomerService {
 
     public Customer getCustomerById(int id) {
 
+        // TODO: Use Exception Handling to validate input parameters and handle empty
+        // responses
         if (id < 0) {
             LOGGER.info("Negative id {} not allowed.", id);
             return null;
