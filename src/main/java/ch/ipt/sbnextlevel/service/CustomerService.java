@@ -62,7 +62,7 @@ public class CustomerService {
         // TODO: Optional - Use Exception Handling to validate input parameters
 
         // TODO: Build the specification
-        // Specification<CustomerEntity> spec =
+        // Specification<CustomerEntity> spec = new CustomerDAOSpec()...
         // List<CustomerEntity> dbResult = customerDAO.findAll(spec);
         List<Customer> customers = new ArrayList<>();
 
