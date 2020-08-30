@@ -26,6 +26,7 @@ public class CustomerDAOSpec implements Specification<CustomerEntity> {
     public CustomerDAOSpec firstNameStartsWith(String firstName) {
         if (!StringUtils.isEmpty(firstName)) {
             specification = specification
+                    // The % character matches zero or more of any character (like .* in regex)
                     .and((root, query, builder) -> builder.like(root.get(CustomerEntity_.firstName), firstName + "%"));
         }
         return this;

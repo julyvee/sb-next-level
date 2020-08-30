@@ -1,5 +1,7 @@
 package ch.ipt.sbnextlevel.data.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,7 @@ public class CustomerEntity {
     private String firstName;
     private String lastName;
     private int age;
+    private LocalDate onboardingDate;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,6 +52,14 @@ public class CustomerEntity {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public LocalDate getOnboardingDate() {
+        return onboardingDate;
+    }
+
+    public void setOnboardingDate(LocalDate onboardingDate) {
+        this.onboardingDate = onboardingDate;
     }
 
     @Override
