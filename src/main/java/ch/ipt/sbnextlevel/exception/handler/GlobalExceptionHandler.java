@@ -2,15 +2,13 @@ package ch.ipt.sbnextlevel.exception.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import ch.ipt.sbnextlevel.exception.model.InvalidQueryException;
 
-@ControllerAdvice
+//@ControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler
+    // @ExceptionHandler
     // public ResponseEntity<ErrorResponse>
     // handleInvalidQueryException(InvalidQueryException e) {
     public ResponseEntity<String> handleInvalidQueryException(InvalidQueryException e) {

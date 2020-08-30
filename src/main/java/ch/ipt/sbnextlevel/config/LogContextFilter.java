@@ -1,7 +1,6 @@
 package ch.ipt.sbnextlevel.config;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -22,8 +21,10 @@ public class LogContextFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        String requestId = UUID.randomUUID().toString();
-        MDC.put("REQ_ID", requestId);
+        // Example: String requestId = UUID.randomUUID().toString();
+
+        // TODO: Fill MDC with variable using MDC.put(key, value)
+
         try {
             chain.doFilter(request, response);
         } finally {

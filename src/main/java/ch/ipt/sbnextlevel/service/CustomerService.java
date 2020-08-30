@@ -27,17 +27,14 @@ public class CustomerService {
 
     public Customer getCustomerById(int id) {
 
+        LOGGER.info("Get Customer called for id {}", id);
         // TODO: Use Exception Handling to validate input parameters and handle empty
         // responses
-        if (id < 0) {
-            LOGGER.info("Negative id {} not allowed.", id);
-            return null;
-        }
 
         Optional<CustomerEntity> dbResult = customerDAO.findById(id);
 
         if (dbResult.isPresent()) {
-            LOGGER.debug("Customer found: {}", dbResult.get());
+            LOGGER.info("Customer found for id {}: {}", id, dbResult.get());
             return modelMapper.map(dbResult.get(), Customer.class);
         } else {
             LOGGER.info("Customer with id {} not found.", id);
