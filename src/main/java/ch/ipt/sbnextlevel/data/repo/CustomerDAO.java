@@ -12,6 +12,6 @@ import ch.ipt.sbnextlevel.model.Customer;
 @Repository
 public interface CustomerDAO extends JpaRepository<CustomerEntity, Integer>, JpaSpecificationExecutor<CustomerEntity> {
 
-    public List<Customer> findByAgeGreaterThanAndAgeLessThanAndfirstNameLikeAndLastNameLike(int minAge, int maxAge,
-            String firstName, String lastName);
+    public List<Customer> findByAgeGreaterThanEqualAndAgeLessThanEqualAndFirstNameLikeAndLastNameLike(int minAge,
+            int maxAge, String firstName, String lastName);
 }
