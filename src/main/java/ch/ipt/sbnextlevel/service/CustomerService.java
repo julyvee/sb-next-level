@@ -34,7 +34,7 @@ public class CustomerService {
         Optional<CustomerEntity> dbResult = customerDAO.findById(id);
 
         if (dbResult.isPresent()) {
-            LOGGER.info("Customer found for id {}: {}", id, dbResult.get());
+            LOGGER.debug("Customer found for id {}: {}", id, dbResult.get());
             return modelMapper.map(dbResult.get(), Customer.class);
         } else {
             LOGGER.info("Customer with id {} not found.", id);
