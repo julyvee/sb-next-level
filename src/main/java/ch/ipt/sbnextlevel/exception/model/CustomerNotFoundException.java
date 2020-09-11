@@ -1,14 +1,14 @@
 package ch.ipt.sbnextlevel.exception.model;
 
-public class InvalidQueryException extends Exception {
+public class CustomerNotFoundException extends Exception {
 
     /**
      *
      */
-    private static final long serialVersionUID = -132517762686755407L;
+    private static final long serialVersionUID = 3213029314765724987L;
     private ErrorResponse errorResponse;
 
-    public InvalidQueryException(String userMessage, String devMessage) {
+    public CustomerNotFoundException(String userMessage, String devMessage) {
         this.errorResponse = new ErrorResponse(userMessage, devMessage);
     }
 
@@ -19,5 +19,4 @@ public class InvalidQueryException extends Exception {
     public void setErrorResponse(ErrorResponse errorResponse) {
         this.errorResponse = errorResponse;
     }
-
 }

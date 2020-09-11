@@ -32,7 +32,32 @@ public class CustomerDAOSpec implements Specification<CustomerEntity> {
         return this;
     }
 
-    // TODO: Write methods for other filter options
+    public CustomerDAOSpec lastNameStartsWith(String lastName) {
+        if (!StringUtils.isEmpty(lastName)) {
+            specification = specification
+                    // The % character matches zero or more of any character (like .* in regex)
+                    .and((root, query, builder) -> builder.like(root.get(CustomerEntity_.lastName), lastName + "%"));
+        }
+        return this;
+    }
+
+    public CustomerDAOSpec ageGreaterThan(Integer minAge) {
+        if (minAge != null) {
+            specification = specification
+                    // The % character matches zero or more of any character (like .* in regex)
+                    .and((root, query, builder) -> builder.greaterThanOrEqualTo(root.get(CustomerEntity_.age), minAge));
+        }
+        return this;
+    }
+
+    public CustomerDAOSpec ageLessThan(Integer maxAge) {
+        if (maxAge != null) {
+            specification = specification
+                    // The % character matches zero or more of any character (like .* in regex)
+                    .and((root, query, builder) -> builder.lessThanOrEqualTo(root.get(CustomerEntity_.age), maxAge));
+        }
+        return this;
+    }
 
     @Override
     public Predicate toPredicate(Root<CustomerEntity> root, CriteriaQuery<?> query, CriteriaBuilder criteriaBuilder) {

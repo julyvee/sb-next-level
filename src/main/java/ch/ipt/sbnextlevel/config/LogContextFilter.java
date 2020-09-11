@@ -1,6 +1,7 @@
 package ch.ipt.sbnextlevel.config;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -21,11 +22,15 @@ public class LogContextFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
-        // Example: String requestId = UUID.randomUUID().toString();
+        String requestId = UUID.randomUUID().toString();
 
-        // TODO: Fill MDC with variable using MDC.put(key, value)
+        // By using the syntax %X{REQ_ID} you can reference this variable in
+        // src/main/logback.xml to automatically add it to all log statements pertaining
+        // this request
+        MDC.put("REQ_ID", requestId);
 
         try {
+            // If you don't do this, the request will not be processed
             chain.doFilter(request, response);
         } finally {
             LOGGER.debug("Clearing Mapped Diagnostic Context");
